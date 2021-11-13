@@ -12,7 +12,7 @@ let displaySize = UIScreen.main.bounds.size
 struct ContentView: View {
     
     @ObservedObject var busDataManager = BusDataManager()
-    @ObservedObject var networkManager = NetworkManager()
+//    @ObservedObject var networkManager = NetworkManager()
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -35,11 +35,11 @@ struct ContentView: View {
             }
             .navigationTitle("Routes")
             .onReceive(timer, perform: { _ in
-                networkManager.fetchData(completionHandler: nil)
+//                networkManager.fetchData(completionHandler: nil)
             })
             .toolbar {
                 Button(action: {
-                    networkManager.fetchData(completionHandler: nil)
+//                    networkManager.fetchData(completionHandler: nil)
                 }) {
                     Image(systemName: "arrow.clockwise")
                 }

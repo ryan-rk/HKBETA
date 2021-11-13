@@ -14,6 +14,15 @@
 		9112DEDC2734EAAE009D6CDB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */; };
 		9112DEE027351C51009D6CDB /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
 		9112DEE227352130009D6CDB /* UserConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserConf.swift */; };
+		913494C6273CC2BA00AC059A /* RouteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C5273CC2BA00AC059A /* RouteSelectionView.swift */; };
+		913494C8273CC55900AC059A /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C7273CC55800AC059A /* RouteModel.swift */; };
+		913494CA273CC60000AC059A /* RouteStopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C9273CC60000AC059A /* RouteStopModel.swift */; };
+		913494CE273CD42600AC059A /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494CD273CD42600AC059A /* ViewModifiers.swift */; };
+		9173B82E273E7A8600A48642 /* RouteStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9173B82D273E7A8600A48642 /* RouteStopsView.swift */; };
+		9194F240273F73DD008592F6 /* StopDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F23F273F73DD008592F6 /* StopDetailsView.swift */; };
+		9194F243273FAC9D008592F6 /* UserFav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F242273FAC9D008592F6 /* UserFav.swift */; };
+		9194F245273FAE58008592F6 /* FavStopsEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F244273FAE58008592F6 /* FavStopsEtaView.swift */; };
+		9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F246273FC4FA008592F6 /* HelperFunc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +34,16 @@
 		9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9112DEDF27351C51009D6CDB /* BusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusData.swift; sourceTree = "<group>"; };
 		9112DEE127352130009D6CDB /* UserConf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConf.swift; sourceTree = "<group>"; };
+		913494C5273CC2BA00AC059A /* RouteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionView.swift; sourceTree = "<group>"; };
+		913494C7273CC55800AC059A /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		913494C9273CC60000AC059A /* RouteStopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopModel.swift; sourceTree = "<group>"; };
+		913494CD273CD42600AC059A /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		9173B82D273E7A8600A48642 /* RouteStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopsView.swift; sourceTree = "<group>"; };
+		9194F23F273F73DD008592F6 /* StopDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsView.swift; sourceTree = "<group>"; };
+		9194F241273F8804008592F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9194F242273FAC9D008592F6 /* UserFav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFav.swift; sourceTree = "<group>"; };
+		9194F244273FAE58008592F6 /* FavStopsEtaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavStopsEtaView.swift; sourceTree = "<group>"; };
+		9194F246273FC4FA008592F6 /* HelperFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,13 +76,23 @@
 		9112DECC2734EA84009D6CDB /* BETA */ = {
 			isa = PBXGroup;
 			children = (
+				9194F241273F8804008592F6 /* Info.plist */,
 				9112DECD2734EA84009D6CDB /* BETAApp.swift */,
 				9112DECF2734EA84009D6CDB /* ContentView.swift */,
 				9112DEE127352130009D6CDB /* UserConf.swift */,
 				9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */,
+				913494C5273CC2BA00AC059A /* RouteSelectionView.swift */,
 				9112DEDF27351C51009D6CDB /* BusData.swift */,
 				9112DED12734EA86009D6CDB /* Assets.xcassets */,
 				9112DED32734EA86009D6CDB /* Preview Content */,
+				913494C7273CC55800AC059A /* RouteModel.swift */,
+				913494C9273CC60000AC059A /* RouteStopModel.swift */,
+				913494CD273CD42600AC059A /* ViewModifiers.swift */,
+				9173B82D273E7A8600A48642 /* RouteStopsView.swift */,
+				9194F23F273F73DD008592F6 /* StopDetailsView.swift */,
+				9194F242273FAC9D008592F6 /* UserFav.swift */,
+				9194F244273FAE58008592F6 /* FavStopsEtaView.swift */,
+				9194F246273FC4FA008592F6 /* HelperFunc.swift */,
 			);
 			path = BETA;
 			sourceTree = "<group>";
@@ -148,9 +177,18 @@
 			files = (
 				9112DEE227352130009D6CDB /* UserConf.swift in Sources */,
 				9112DEDC2734EAAE009D6CDB /* NetworkManager.swift in Sources */,
+				913494C6273CC2BA00AC059A /* RouteSelectionView.swift in Sources */,
+				913494CE273CD42600AC059A /* ViewModifiers.swift in Sources */,
 				9112DED02734EA84009D6CDB /* ContentView.swift in Sources */,
 				9112DECE2734EA84009D6CDB /* BETAApp.swift in Sources */,
+				913494CA273CC60000AC059A /* RouteStopModel.swift in Sources */,
+				9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */,
+				9173B82E273E7A8600A48642 /* RouteStopsView.swift in Sources */,
+				9194F245273FAE58008592F6 /* FavStopsEtaView.swift in Sources */,
+				9194F243273FAC9D008592F6 /* UserFav.swift in Sources */,
+				913494C8273CC55900AC059A /* RouteModel.swift in Sources */,
 				9112DEE027351C51009D6CDB /* BusData.swift in Sources */,
+				9194F240273F73DD008592F6 /* StopDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +322,8 @@
 				DEVELOPMENT_TEAM = WY737TDYN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BETA/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required for showing user location in relation to bus stop";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -313,6 +353,8 @@
 				DEVELOPMENT_TEAM = WY737TDYN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BETA/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required for showing user location in relation to bus stop";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

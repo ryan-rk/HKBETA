@@ -10,26 +10,29 @@ import SwiftUI
 
 class NetworkManager: ObservableObject {
     
-    @Published var busData: [Bus] = []
     
-    func fetchData(completionHandler: (()->Void)?) {
-        if let url = URL(string: "https://data.etabus.gov.hk//v1/transport/kmb/route-eta/91M/1") {
+    func fetchData<T: Decodable>(url: URL?, resultType: T.Type, completionHandler: ((_ decodedResult: Decodable?)->Void)?) {
+        if let url = url {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let results = try decoder.decode(BusData.self, from: safeData)
+                            let results = try decoder.decode(T.self, from: safeData)
                             DispatchQueue.main.async {
-                                self.busData = results.data
                                 if let completionHandler = completionHandler {
-                                    completionHandler()
+                                    completionHandler(results)
                                 }
-                                print("data updated")
+//                                print("data updated")
                             }
                         } catch {
                             print(error)
+                            DispatchQueue.main.async {
+                                if let completionHandler = completionHandler {
+                                    completionHandler(nil)
+                                }
+                            }
                         }
                     }
                 }

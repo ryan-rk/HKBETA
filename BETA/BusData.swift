@@ -7,10 +7,16 @@
 
 import Foundation
 
+
+
+
+// MARK: -
+
+
+
 struct BusData: Decodable {
     let data: [Bus]
 }
-
 
 struct Bus: Decodable {
     let route: String
@@ -45,15 +51,15 @@ class BusDataManager: ObservableObject {
     @Published var busDataRows: [BusDataRow] = []
     
     init() {
-        networkManager.fetchData(completionHandler: updateRows)
+//        networkManager.fetchData(completionHandler: updateRows)
     }
     
     func updateRows() {
-        bussesData = networkManager.busData
-        for userSelection in userSelections {
-            let filteredBusses = filterBusData(for: userSelection)
-            busDataRows.append(BusDataRow(busses: filteredBusses))
-        }
+//        bussesData = networkManager.busData
+//        for userSelection in userSelections {
+//            let filteredBusses = filterBusData(for: userSelection)
+//            busDataRows.append(BusDataRow(busses: filteredBusses))
+//        }
     }
     
     func filterBusData(for bus: UserSelection) -> [Bus] {
