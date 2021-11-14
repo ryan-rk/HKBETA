@@ -34,6 +34,7 @@ struct RouteStopsView: View {
                 }
             }
         }
+        .navigationTitle("Route Stops List")
     }
 }
 

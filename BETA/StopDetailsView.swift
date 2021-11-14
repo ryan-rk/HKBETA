@@ -56,6 +56,7 @@ struct StopDetailsView: View {
             
         }
         .padding()
+        .navigationTitle("Bus Stop Details")
     }
 }
 
