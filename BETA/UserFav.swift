@@ -9,6 +9,7 @@ import Foundation
 
 struct UserFav: Identifiable, Codable {
     let id = UUID()
+    let company: String
     let route: String
     let bound: String
     let enDest: String
@@ -39,8 +40,8 @@ class UserFavManager: ObservableObject {
     }
     
     func addDemoFavs() {
-        addFav(newFav: UserFav(route: "91M", bound: "O", enDest: "Po Lam", stopId: "796CAA794D4DEBE8", stopEnName: "Hang Hau"))
-        addFav(newFav: UserFav(route: "91M", bound: "O", enDest: "Diamond Hill", stopId: "FC42DCBDC3AB0B6F", stopEnName: "Clear Water Bay"))
+        addFav(newFav: UserFav(company: "KMB", route: "91M", bound: "O", enDest: "Po Lam", stopId: "796CAA794D4DEBE8", stopEnName: "Hang Hau"))
+        addFav(newFav: UserFav(company: "KMB", route: "91M", bound: "O", enDest: "Diamond Hill", stopId: "FC42DCBDC3AB0B6F", stopEnName: "Clear Water Bay"))
     }
     
     func loadFavs() -> [UserFav] {
@@ -85,7 +86,9 @@ class UserFavManager: ObservableObject {
                 var stopCount = 0
                 for stopEta in stopEtaResult.data {
                     if (stopCount < 3) && (stopEta.dir == bound) {
-                        stopEtas[stopCount] = String(HelperFunc.formatEta(eta: stopEta.eta))
+                        if let etaExist = stopEta.eta {
+                            stopEtas[stopCount] = String(HelperFunc.formatEta(eta: etaExist))
+                        }
                         stopCount += 1
                     }
                 }

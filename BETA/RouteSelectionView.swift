@@ -20,7 +20,7 @@ struct RouteSelectionView: View {
                     HStack {
                         Button(action: { routeManager.fetchRoutesDataBothDir(enteredRoute: enteredRoute) }) {
                             Image(systemName: "magnifyingglass")
-                                .font(.system(size: 35))
+                                .font(.system(size: 30))
                                 .foregroundColor(.gray)
                         }
                         .buttonStyle(BorderlessButtonStyle())

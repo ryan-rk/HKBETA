@@ -10,22 +10,64 @@ import Foundation
 // MARK: - Data model for stops list of specific route
 struct RouteStopsResult: Decodable {
     let data: [RouteStop]
-}
-
-struct RouteStop: Decodable, Identifiable {
-    var id: String {
-        return stopSequence
-    }
-    let route: String
-    let bound: String
-    let stopSequence: String
-    let stopID: String
     
     enum CodingKeys: String, CodingKey {
-        case route
-        case bound
-        case stopSequence = "seq"
-        case stopID = "stop"
+        case data
+    }
+    
+    struct RouteStop: Decodable, Identifiable {
+        var id: String {
+            return stopSequence
+        }
+        let route: String
+        let bound: String?
+        let direction: String?
+        let stopSequence: String
+        let stopID: String
+        
+        enum CodingKeys: String, CodingKey {
+            case route
+            case bound
+            case direction = "dir"
+            case stopSequence = "seq"
+            case stopID = "stop"
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            route = try container.decode(String.self, forKey: .route)
+            bound = try container.decodeIfPresent(String.self, forKey: .bound)
+            direction = try container.decodeIfPresent(String.self, forKey: .direction)
+            do {
+                stopSequence = try container.decode(String.self, forKey: .stopSequence)
+            } catch {
+                stopSequence = try String(container.decode(Int.self, forKey: .stopSequence))
+            }
+            stopID = try container.decode(String.self, forKey: .stopID)
+        }
+        
+        init(route: String, bound: String, stopSequence: String, stopID: String) {
+            self.route = route
+            self.bound = bound
+            self.direction = bound
+            self.stopSequence = stopSequence
+            self.stopID = stopID
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        var dataContainer = try container.nestedUnkeyedContainer(forKey: .data)
+        var routeStops = [RouteStop]()
+        while (!dataContainer.isAtEnd) {
+            let routeStop = try dataContainer.decode(RouteStop.self)
+            routeStops.append(routeStop)
+        }
+        self.data = routeStops
+    }
+    
+    init(data: [RouteStop]) {
+        self.data = data
     }
 }
 
@@ -75,7 +117,7 @@ struct RouteStopEtaResult: Decodable {
 
 struct RouteStopEta: Decodable {
     let dir: String
-    let eta: String
+    let eta: String?
     let etaSequence: Int
     
     enum CodingKeys: String, CodingKey {
@@ -96,25 +138,24 @@ class RouteStopsManager: ObservableObject {
     
     init(routeResult: RouteResult) {
         self.routeResult = routeResult
-        fetchRouteStopsData(route: routeResult.route, bound: routeResult.bound)
+        fetchRouteStopsData(company: BusCo(rawValue: routeResult.company) ?? .kmb, route: routeResult.route, bound: routeResult.bound)
     }
     
-    func fetchRouteStopsData(route: String, bound: String) {
-        let formattedBound = bound == "O" ? "outbound" : "inbound"
-        let routeStopsUrlString = "https://data.etabus.gov.hk/v1/transport/kmb/route-stop/\(route.uppercased())/\(formattedBound)/1"
+    func fetchRouteStopsData(company: BusCo, route: String, bound: String) {
+        let routeStopsUrlString = company.getRouteStopsUrl(route: route, bound: bound)
         let routeStopsUrl = URL(string: routeStopsUrlString)
         networkManager.fetchData(url: routeStopsUrl, resultType: RouteStopsResult.self) { results in
             if let routeStopsResult = results as? RouteStopsResult {
                 self.routeStopsResult = routeStopsResult
-                self.getStopNameAndEtas()
+                self.getStopNameAndEtas(company: company)
             } else {
                 print("Route Stops result downcast failed")
             }
         }
     }
     
-    func fetchStopName(stopSeq: String, stopID: String) {
-        let stopNameUrlString = "https://data.etabus.gov.hk/v1/transport/kmb/stop/" + stopID
+    func fetchStopName(company: BusCo, stopSeq: String, stopID: String) {
+        let stopNameUrlString = company.getStopNameUrl(stopID: stopID)
         let stopNameUrl = URL(string: stopNameUrlString)
         networkManager.fetchData(url: stopNameUrl, resultType: StopInfoResult.self) { results in
             if let stopInfoResult = results as? StopInfoResult {
@@ -125,8 +166,8 @@ class RouteStopsManager: ObservableObject {
         }
     }
     
-    func fetchStopEtas(route: String, bound: String, stopSeq: String, stopID: String) {
-        let stopEtaUrlString = "https://data.etabus.gov.hk/v1/transport/kmb/eta/\(stopID)/\(route.uppercased())/1"
+    func fetchStopEtas(company: BusCo, route: String, bound: String, stopSeq: String, stopID: String) {
+        let stopEtaUrlString = company.getStopEtaUrl(route: route, stopID: stopID)
         let stopEtaUrl = URL(string: stopEtaUrlString)
         networkManager.fetchData(url: stopEtaUrl, resultType: RouteStopEtaResult.self) { results in
             if let stopEtaResult = results as? RouteStopEtaResult {
@@ -134,7 +175,9 @@ class RouteStopsManager: ObservableObject {
                 var stopCount = 0
                 for stopEta in stopEtaResult.data {
                     if (stopCount < 3) && (stopEta.dir == bound) {
-                        stopEtas[stopCount] = String(HelperFunc.formatEta(eta: stopEta.eta))
+                        if let etaExist = stopEta.eta {
+                            stopEtas[stopCount] = String(HelperFunc.formatEta(eta: etaExist))
+                        }
                         stopCount += 1
                     }
                 }
@@ -145,10 +188,11 @@ class RouteStopsManager: ObservableObject {
         }
     }
     
-    func getStopNameAndEtas() {
+    func getStopNameAndEtas(company: BusCo) {
         for routeStop in routeStopsResult.data {
-            fetchStopName(stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
-            fetchStopEtas(route: routeStop.route, bound: routeStop.bound, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
+            fetchStopName(company: company, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
+            let boundOrDir = routeStop.bound ?? routeStop.direction ?? "O"
+            fetchStopEtas(company: company, route: routeStop.route, bound: boundOrDir, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
         }
     }
     
