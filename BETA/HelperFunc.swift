@@ -18,7 +18,7 @@ class HelperFunc {
         }
         let currentDate = Date()
         let timeDiff = etaDate.timeIntervalSince(currentDate)
-        return Int(timeDiff/60)
+        return max(0, Int(timeDiff/60))
     }
     
     static func readLocalFile(forName name: String) -> Data? {

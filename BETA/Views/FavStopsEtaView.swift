@@ -12,6 +12,8 @@ struct FavStopsEtaView: View {
     @StateObject var userFavManager = UserFavManager()
     @State var showSearchSheet = false
     
+    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -24,7 +26,6 @@ struct FavStopsEtaView: View {
                                 Text(userFav.enDest)
                                     .font(.system(size: 20))
                                     .padding(.bottom, 6)
-                                Divider()
                                 Text(userFav.stopEnName)
                                     .font(.system(size: 12))
                             }
@@ -43,14 +44,9 @@ struct FavStopsEtaView: View {
                     }
                     .onDelete(perform: userFavManager.removeFav)
                 }
-//                Button("Add new fav") {
-//                    self.showAddNewSheet.toggle()
-//                }
-//                .sheet(isPresented: $showAddNewSheet, onDismiss: dismissAddNewSheet) {
-//                    NavigationView {
-//                        RouteSelectionView(userFavManager: userFavManager)
-//                    }
-//                }
+                .onReceive(timer, perform: { _ in
+                    userFavManager.updateStopsEta()
+                })
             }
             .navigationBarTitle("Favourites ETA")
             .toolbar {
@@ -81,6 +77,7 @@ struct FavStopsEtaView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
     
     func dismissSearchSheet() {

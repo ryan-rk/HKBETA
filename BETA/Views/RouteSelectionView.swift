@@ -10,7 +10,7 @@ import SwiftUI
 struct RouteSelectionView: View {
     
     @State private var enteredRoute = ""
-    @StateObject private var routeManager = RouteManager()
+    @StateObject private var routeViewModel = RouteViewModel()
     @ObservedObject var userFavManager: UserFavManager
     
     var body: some View {
@@ -18,7 +18,7 @@ struct RouteSelectionView: View {
             Form {
                 Section {
                     HStack {
-                        Button(action: { routeManager.fetchRoutesDataBothDir(enteredRoute: enteredRoute) }) {
+                        Button(action: { routeViewModel.fetchRoutesDataBothDir(enteredRoute: enteredRoute) }) {
                             Image(systemName: "magnifyingglass")
                                 .font(.system(size: 30))
                                 .foregroundColor(.gray)
@@ -26,10 +26,10 @@ struct RouteSelectionView: View {
                         .buttonStyle(BorderlessButtonStyle())
                         
                         TextField("Enter bus route no.", text: $enteredRoute)
-                            .onSubmit { routeManager.fetchRoutesDataBothDir(enteredRoute: enteredRoute) }
+                            .onSubmit { routeViewModel.fetchRoutesDataBothDir(enteredRoute: enteredRoute) }
                         
                         Button(action: {
-                            routeManager.clearRoutesData()
+                            routeViewModel.clearRoutesData()
                             enteredRoute = ""
                         } ) {
                             Image(systemName: "xmark.circle.fill")
@@ -40,9 +40,8 @@ struct RouteSelectionView: View {
                     }
                 }
                 Section {
-                    ForEach(routeManager.routeResults) { route in
-//                        Text(route.dest)
-                        NavigationLink(route.dest, destination: RouteStopsView(routeStopsManager: RouteStopsManager(routeResult: route), userFavManager: userFavManager))
+                    ForEach(routeViewModel.routeResults) { route in
+                        NavigationLink(route.dest, destination: RouteStopsView(routeStopsViewModel: RouteStopsViewModel(routeResult: route), userFavManager: userFavManager))
                     }
                 }
             }
