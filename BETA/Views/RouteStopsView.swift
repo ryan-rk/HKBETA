@@ -10,7 +10,7 @@ import SwiftUI
 struct RouteStopsView: View {
     
     @StateObject var routeStopsViewModel: RouteStopsViewModel
-    @ObservedObject var userFavManager: UserFavManager
+    var userFavManager: UserFavManager
     
     var body: some View {
         List {
@@ -23,11 +23,12 @@ struct RouteStopsView: View {
                             .foregroundColor(.gray)
                         HStack {
                             Text("ETA: ")
-                            Text("\(routeStopsViewModel.routeStopsEtas[routeStop.stopSequence]?[0] ?? "-") min")
+                            let stringEtas = formatDisplayTime(stopSequence: routeStop.stopSequence)
+                            Text(stringEtas[0] + " min")
                             Spacer()
-                            Text("\(routeStopsViewModel.routeStopsEtas[routeStop.stopSequence]?[1] ?? "-") min")
+                            Text(stringEtas[1] + " min")
                             Spacer()
-                            Text("\(routeStopsViewModel.routeStopsEtas[routeStop.stopSequence]?[2] ?? "-") min")
+                            Text(stringEtas[2] + " min")
                         }
                     }
                     .padding(.bottom, 20)
@@ -35,6 +36,14 @@ struct RouteStopsView: View {
             }
         }
         .navigationTitle("Route Stops List")
+    }
+    
+    func formatDisplayTime(stopSequence: String) -> [String] {
+        var stringEtas = ["-","-","-"]
+        if let etas = routeStopsViewModel.routeStopsEtas[stopSequence] {
+            HelperFunc.formatTimeDiffToString(etas: etas, stringEtas: &stringEtas)
+        }
+        return stringEtas
     }
 }
 

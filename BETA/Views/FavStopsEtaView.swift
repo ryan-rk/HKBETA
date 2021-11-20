@@ -23,20 +23,24 @@ struct FavStopsEtaView: View {
                             Text(userFav.route)
                                 .padding()
                             VStack(alignment: .leading) {
-                                Text(userFav.enDest)
+                                Text("Stop:")
+                                    .font(.system(size: 12))
+                                Text(userFav.stopEnName)
                                     .font(.system(size: 20))
                                     .padding(.bottom, 6)
-                                Text(userFav.stopEnName)
+                                Text("To: \(userFav.enDest)")
                                     .font(.system(size: 12))
                             }
                             Spacer()
                             VStack {
-                                Text("\(userFavManager.routeStopsEtas[userFav.id]?[0] ?? "-" ) min")
+                                let stringEtas = formatDisplayTime(userFavId: userFav.id)
+                                Text(stringEtas[0] + " min")
+//                                Text("\(userFavManager.routeStopsEtas[userFav.id]?[0] ?? "-" ) min")
                                     .font(.system(size: 25))
                                     .bold()
-                                Text("\(userFavManager.routeStopsEtas[userFav.id]?[1] ?? "-" ) min")
+                                Text(stringEtas[1] + " min")
                                     .font(.system(size: 15))
-                                Text("\(userFavManager.routeStopsEtas[userFav.id]?[2] ?? "-" ) min")
+                                Text(stringEtas[2] + " min")
                                     .font(.system(size: 12))
                             }
                             .padding()
@@ -47,6 +51,14 @@ struct FavStopsEtaView: View {
                 .onReceive(timer, perform: { _ in
                     userFavManager.updateStopsEta()
                 })
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+                    // stop refresh timer
+                    print("enter background")
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    // start refresh timer
+                    print("enter foreground")
+                }
             }
             .navigationBarTitle("Favourites ETA")
             .toolbar {
@@ -82,6 +94,14 @@ struct FavStopsEtaView: View {
     
     func dismissSearchSheet() {
         userFavManager.updateStopsEta()
+    }
+    
+    func formatDisplayTime(userFavId: UUID) -> [String] {
+        var stringEtas = ["-","-","-"]
+        if let etas = userFavManager.routeStopsEtas[userFavId] {
+            HelperFunc.formatTimeDiffToString(etas: etas, stringEtas: &stringEtas)
+        }
+        return stringEtas
     }
     
 }

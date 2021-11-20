@@ -10,10 +10,9 @@ import Foundation
 class RouteStopsViewModel: ObservableObject {
     
     let routeResult: RouteResult
-    let networkManager = NetworkManager()
     @Published var routeStopsResult = RouteStopsResult(data: [])
     @Published var routeStopsInfo = [String: StopInfoResult]()
-    @Published var routeStopsEtas = [String: [String]]()
+    @Published var routeStopsEtas = [String: [Date?]]()
     
     init(routeResult: RouteResult) {
         self.routeResult = routeResult
@@ -23,7 +22,7 @@ class RouteStopsViewModel: ObservableObject {
     func fetchRouteStopsData(company: BusCo, route: String, bound: String) {
         let routeStopsUrlString = company.getRouteStopsUrl(route: route, bound: bound)
         let routeStopsUrl = URL(string: routeStopsUrlString)
-        networkManager.fetchData(url: routeStopsUrl, resultType: RouteStopsResult.self) { results in
+        NetworkManager.fetchData(url: routeStopsUrl, resultType: RouteStopsResult.self) { results in
             if let routeStopsResult = results as? RouteStopsResult {
                 self.routeStopsResult = routeStopsResult
                 self.getStopNameAndEtas(company: company)
@@ -36,7 +35,7 @@ class RouteStopsViewModel: ObservableObject {
     func fetchStopName(company: BusCo, stopSeq: String, stopID: String) {
         let stopNameUrlString = company.getStopNameUrl(stopID: stopID)
         let stopNameUrl = URL(string: stopNameUrlString)
-        networkManager.fetchData(url: stopNameUrl, resultType: StopInfoResult.self) { results in
+        NetworkManager.fetchData(url: stopNameUrl, resultType: StopInfoResult.self) { results in
             if let stopInfoResult = results as? StopInfoResult {
                 self.routeStopsInfo[stopSeq] = stopInfoResult
             } else {
@@ -45,22 +44,23 @@ class RouteStopsViewModel: ObservableObject {
         }
     }
     
-    func fetchStopEtas(company: BusCo, route: String, bound: String, stopSeq: String, stopID: String) {
+//    func fetchStopEtas(company: BusCo, route: String, bound: String, stopSeq: String, stopID: String) {
+    static func fetchStopEtas(company: BusCo, route: String, bound: String, stopID: String, completion: @escaping ([Date?])->() ) {
         let stopEtaUrlString = company.getStopEtaUrl(route: route, stopID: stopID)
         let stopEtaUrl = URL(string: stopEtaUrlString)
-        networkManager.fetchData(url: stopEtaUrl, resultType: RouteStopEtaResult.self) { results in
+        NetworkManager.fetchData(url: stopEtaUrl, resultType: RouteStopEtaResult.self) { results in
             if let stopEtaResult = results as? RouteStopEtaResult {
-                var stopEtas = ["-", "-", "-"]
+//                var stopEtas = ["-", "-", "-"]
+                var stopEtas: [Date?] = [nil, nil, nil]
                 var stopCount = 0
                 for stopEta in stopEtaResult.data {
                     if (stopCount < 3) && (stopEta.dir == bound) {
-                        if let etaExist = stopEta.eta {
-                            stopEtas[stopCount] = String(HelperFunc.formatEta(eta: etaExist))
-                        }
+                        stopEtas[stopCount] = stopEta.eta
                         stopCount += 1
                     }
                 }
-                self.routeStopsEtas[stopSeq] = stopEtas
+                completion(stopEtas)
+//                self.routeStopsEtas[stopSeq] = stopEtas
             } else {
                 print("Stop eta result downcast failed")
             }
@@ -70,8 +70,12 @@ class RouteStopsViewModel: ObservableObject {
     func getStopNameAndEtas(company: BusCo) {
         for routeStop in routeStopsResult.data {
             fetchStopName(company: company, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
-            let boundOrDir = routeStop.bound ?? routeStop.direction ?? "O"
-            fetchStopEtas(company: company, route: routeStop.route, bound: boundOrDir, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
+            let boundOrDir = routeStop.bound ?? "O"
+//            let boundOrDir = routeStop.bound ?? routeStop.direction ?? "O"
+//            RouteStopsViewModel.fetchStopEtas(company: company, route: routeStop.route, bound: boundOrDir, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
+            RouteStopsViewModel.fetchStopEtas(company: company, route: routeStop.route, bound: boundOrDir, stopID: routeStop.stopID) { stopEtas in
+                self.routeStopsEtas[routeStop.stopSequence] = stopEtas
+            }
         }
     }
     

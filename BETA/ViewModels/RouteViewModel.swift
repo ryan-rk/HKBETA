@@ -9,13 +9,13 @@ import Foundation
 
 class RouteViewModel: ObservableObject {
     
-    let networkManager = NetworkManager()
+//    let networkManager = NetworkManager()
     @Published var routeResults = [RouteResult]()
     
     func fetchRouteData(company: BusCo, route: String, bound: String) {
         let routeUrlString = company.getRouteUrl(route: route, bound: bound)
         let routeUrl = URL(string: routeUrlString)
-        networkManager.fetchData(url: routeUrl, resultType: RouteResult.self) { results in
+        NetworkManager.fetchData(url: routeUrl, resultType: RouteResult.self) { results in
             if let routeResult = results as? RouteResult {
                 if (company != .kmb) && (bound == "I") {
                     let formattedResult = RouteResult(company: routeResult.company, route: routeResult.route, bound: "I", orig: routeResult.dest, dest: routeResult.orig)

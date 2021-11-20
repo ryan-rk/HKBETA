@@ -11,8 +11,6 @@ import SwiftUI
 struct BETAApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            RouteSelectionView()
             FavStopsEtaView()
         }
     }

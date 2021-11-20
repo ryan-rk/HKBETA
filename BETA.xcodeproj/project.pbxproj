@@ -21,6 +21,10 @@
 		9194F243273FAC9D008592F6 /* UserFav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F242273FAC9D008592F6 /* UserFav.swift */; };
 		9194F245273FAE58008592F6 /* FavStopsEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F244273FAE58008592F6 /* FavStopsEtaView.swift */; };
 		9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F246273FC4FA008592F6 /* HelperFunc.swift */; };
+		91E62B4B2748A079001A39AE /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E62B4A2748A079001A39AE /* TestView.swift */; };
+		91E8CAA0274760AB00A5FC3F /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
+		91E8CAA1274760BA00A5FC3F /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
+		91E8CAA2274760DF00A5FC3F /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C7273CC55800AC059A /* RouteModel.swift */; };
 		91FF99302744AF4900922C95 /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF992F2744AF4900922C95 /* RouteViewModel.swift */; };
 		91FF99322744AF8400922C95 /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
 		91FF993D2744B5CD00922C95 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91FF993C2744B5CD00922C95 /* WidgetKit.framework */; };
@@ -28,6 +32,12 @@
 		91FF99422744B5CD00922C95 /* BETA_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99412744B5CD00922C95 /* BETA_Widget.swift */; };
 		91FF99442744B5CE00922C95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91FF99432744B5CE00922C95 /* Assets.xcassets */; };
 		91FF99482744B5CE00922C95 /* BETA WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 91FF993A2744B5CD00922C95 /* BETA WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		91FF994E2744B95000922C95 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF994D2744B95000922C95 /* Extensions.swift */; };
+		91FF994F2744B98000922C95 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF994D2744B95000922C95 /* Extensions.swift */; };
+		91FF99502745306400922C95 /* UserFav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F242273FAC9D008592F6 /* UserFav.swift */; };
+		91FF9951274534AA00922C95 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */; };
+		91FF9952274534B900922C95 /* HelperFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F246273FC4FA008592F6 /* HelperFunc.swift */; };
+		91FF9953274534DC00922C95 /* RouteStopsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C9273CC60000AC059A /* RouteStopsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +80,7 @@
 		9194F242273FAC9D008592F6 /* UserFav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFav.swift; sourceTree = "<group>"; };
 		9194F244273FAE58008592F6 /* FavStopsEtaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavStopsEtaView.swift; sourceTree = "<group>"; };
 		9194F246273FC4FA008592F6 /* HelperFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunc.swift; sourceTree = "<group>"; };
+		91E62B4A2748A079001A39AE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		91FF992F2744AF4900922C95 /* RouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopsViewModel.swift; sourceTree = "<group>"; };
 		91FF993A2744B5CD00922C95 /* BETA WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BETA WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +89,9 @@
 		91FF99412744B5CD00922C95 /* BETA_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BETA_Widget.swift; sourceTree = "<group>"; };
 		91FF99432744B5CE00922C95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91FF99452744B5CE00922C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91FF994D2744B95000922C95 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		91FF995427453E1500922C95 /* BETA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BETA.entitlements; sourceTree = "<group>"; };
+		91FF995527453EB900922C95 /* BETA WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BETA WidgetExtension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +117,7 @@
 		9112DEC12734EA84009D6CDB = {
 			isa = PBXGroup;
 			children = (
+				91FF995527453EB900922C95 /* BETA WidgetExtension.entitlements */,
 				9112DECC2734EA84009D6CDB /* BETA */,
 				91FF99402744B5CD00922C95 /* BETA Widget */,
 				91FF993B2744B5CD00922C95 /* Frameworks */,
@@ -122,17 +137,16 @@
 		9112DECC2734EA84009D6CDB /* BETA */ = {
 			isa = PBXGroup;
 			children = (
-				9112DECD2734EA84009D6CDB /* BETAApp.swift */,
-				9112DEE127352130009D6CDB /* UserConf.swift */,
-				9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */,
-				91FF99332744B04200922C95 /* Views */,
-				9112DEDF27351C51009D6CDB /* BusData.swift */,
+				91FF995427453E1500922C95 /* BETA.entitlements */,
 				9112DED12734EA86009D6CDB /* Assets.xcassets */,
+				9112DECD2734EA84009D6CDB /* BETAApp.swift */,
+				91E8CAA32747614300A5FC3F /* Data */,
+				91E8CAA42747615E00A5FC3F /* Helper */,
+				91FF99332744B04200922C95 /* Views */,
 				9112DED32734EA86009D6CDB /* Preview Content */,
 				91FF99352744B08D00922C95 /* Models */,
-				9194F242273FAC9D008592F6 /* UserFav.swift */,
-				9194F246273FC4FA008592F6 /* HelperFunc.swift */,
 				91FF99342744B05A00922C95 /* ViewModels */,
+				91E62B4A2748A079001A39AE /* TestView.swift */,
 			);
 			path = BETA;
 			sourceTree = "<group>";
@@ -143,6 +157,25 @@
 				9112DED42734EA86009D6CDB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		91E8CAA32747614300A5FC3F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9112DEE127352130009D6CDB /* UserConf.swift */,
+				9112DEDF27351C51009D6CDB /* BusData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		91E8CAA42747615E00A5FC3F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */,
+				9194F246273FC4FA008592F6 /* HelperFunc.swift */,
+				91FF994D2744B95000922C95 /* Extensions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		91FF99332744B04200922C95 /* Views */ = {
@@ -159,6 +192,7 @@
 		91FF99342744B05A00922C95 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9194F242273FAC9D008592F6 /* UserFav.swift */,
 				91FF992F2744AF4900922C95 /* RouteViewModel.swift */,
 				91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */,
 			);
@@ -298,12 +332,14 @@
 				9112DEDC2734EAAE009D6CDB /* NetworkManager.swift in Sources */,
 				913494C6273CC2BA00AC059A /* RouteSelectionView.swift in Sources */,
 				9112DECE2734EA84009D6CDB /* BETAApp.swift in Sources */,
+				91E62B4B2748A079001A39AE /* TestView.swift in Sources */,
 				913494CA273CC60000AC059A /* RouteStopsModel.swift in Sources */,
 				9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */,
 				91FF99322744AF8400922C95 /* RouteStopsViewModel.swift in Sources */,
 				9173B82E273E7A8600A48642 /* RouteStopsView.swift in Sources */,
 				9194F245273FAE58008592F6 /* FavStopsEtaView.swift in Sources */,
 				9194F243273FAC9D008592F6 /* UserFav.swift in Sources */,
+				91FF994E2744B95000922C95 /* Extensions.swift in Sources */,
 				913494C8273CC55900AC059A /* RouteModel.swift in Sources */,
 				91FF99302744AF4900922C95 /* RouteViewModel.swift in Sources */,
 				9112DEE027351C51009D6CDB /* BusData.swift in Sources */,
@@ -315,7 +351,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91FF9951274534AA00922C95 /* NetworkManager.swift in Sources */,
+				91FF9953274534DC00922C95 /* RouteStopsModel.swift in Sources */,
+				91FF9952274534B900922C95 /* HelperFunc.swift in Sources */,
+				91E8CAA2274760DF00A5FC3F /* RouteModel.swift in Sources */,
 				91FF99422744B5CD00922C95 /* BETA_Widget.swift in Sources */,
+				91E8CAA1274760BA00A5FC3F /* BusData.swift in Sources */,
+				91FF994F2744B98000922C95 /* Extensions.swift in Sources */,
+				91FF99502745306400922C95 /* UserFav.swift in Sources */,
+				91E8CAA0274760AB00A5FC3F /* RouteStopsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +496,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BETA/BETA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BETA/Preview Content\"";
@@ -483,6 +528,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BETA/BETA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BETA/Preview Content\"";
@@ -513,6 +559,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "BETA WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WY737TDYN7;
@@ -540,6 +587,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "BETA WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WY737TDYN7;

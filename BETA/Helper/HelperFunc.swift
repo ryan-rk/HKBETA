@@ -21,10 +21,22 @@ class HelperFunc {
         return max(0, Int(timeDiff/60))
     }
     
+    static func formatTimeDiffToString(etas: [Date?], stringEtas: inout [String]) {
+        for (index,eta) in etas.enumerated() {
+            if let etaExist = eta {
+                let dateDiff = Calendar.current.dateComponents([.minute], from: Date(), to: etaExist)
+                let minuteDiff = dateDiff.minute
+                stringEtas[index] = String(minuteDiff ?? 0)
+            }
+        }
+    }
+    
     static func readLocalFile(forName name: String) -> Data? {
         let fileManager = FileManager.default
-        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-        let file = url[0].appendingPathComponent(name)
+//        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+//        let file = url[0].appendingPathComponent(name)
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.rkcoding.ios.BETA.contents")!
+        let file = url.appendingPathComponent(name)
         
         if (fileManager.fileExists(atPath: file.path)) {
             do {

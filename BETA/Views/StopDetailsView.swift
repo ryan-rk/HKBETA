@@ -10,7 +10,7 @@ import MapKit
 
 struct StopDetailsView: View {
     
-    @ObservedObject var userFavManager: UserFavManager
+    var userFavManager: UserFavManager
     var routeStop: RouteStopsResult.RouteStop
     var routeResult: RouteResult
     let stopInfo: StopInfoResult?
@@ -37,7 +37,7 @@ struct StopDetailsView: View {
             
             HStack {
                 Button(action: {
-                    userFavManager.addFav(newFav: UserFav(company: routeResult.company, route: routeStop.route, bound: routeStop.bound ?? routeStop.direction ?? "O", enDest: routeResult.dest, stopId: routeStop.stopID, stopEnName: stopInfo?.enName ?? "Name not available"))
+                    userFavManager.addFav(newFav: UserFav(company: routeResult.company, route: routeStop.route, bound: routeStop.bound ?? "O", enDest: routeResult.dest, stopId: routeStop.stopID, stopEnName: stopInfo?.enName ?? "Name not available"))
                     
                 }) {
                     HStack {
