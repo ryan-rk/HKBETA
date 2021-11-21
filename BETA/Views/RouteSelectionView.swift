@@ -11,7 +11,7 @@ struct RouteSelectionView: View {
     
     @State private var enteredRoute = ""
     @StateObject private var routeViewModel = RouteViewModel()
-    @ObservedObject var userFavManager: UserFavManager
+    @EnvironmentObject var userFavManager: UserFavManager
     
     var body: some View {
 //        NavigationView {
@@ -41,7 +41,7 @@ struct RouteSelectionView: View {
                 }
                 Section {
                     ForEach(routeViewModel.routeResults) { route in
-                        NavigationLink(route.dest, destination: RouteStopsView(routeStopsViewModel: RouteStopsViewModel(routeResult: route), userFavManager: userFavManager))
+                        NavigationLink(route.dest, destination: RouteStopsView(routeStopsViewModel: RouteStopsViewModel(routeResult: route)))
                     }
                 }
             }
@@ -53,6 +53,6 @@ struct RouteSelectionView: View {
 struct RouteSelectionScreen_Previews: PreviewProvider {
     
     static var previews: some View {
-        RouteSelectionView(userFavManager: UserFavManager())
+        RouteSelectionView().environmentObject(UserFavManager())
     }
 }

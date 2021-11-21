@@ -10,7 +10,7 @@ import MapKit
 
 struct StopDetailsView: View {
     
-    var userFavManager: UserFavManager
+    @EnvironmentObject var userFavManager: UserFavManager
     var routeStop: RouteStopsResult.RouteStop
     var routeResult: RouteResult
     let stopInfo: StopInfoResult?
@@ -60,7 +60,7 @@ struct StopDetailsView: View {
 
 struct StopDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        StopDetailsView(userFavManager: UserFavManager(), routeStop: RouteStopsResult.RouteStop(route: "91M", bound: "O", stopSequence: "1", stopID: "123"), routeResult: RouteResult(route: "91m", bound: "O", orig: "Po Lam", dest: "Diamond Hill"), stopInfo: StopInfoResult(name: "YAN KING ROAD", tcName: "欣景路", scName: "欣景路", latitude: "22.323790", longitude: "114.258615"))
+        StopDetailsView(routeStop: RouteStopsResult.RouteStop(route: "91M", bound: "O", stopSequence: "1", stopID: "123"), routeResult: RouteResult(route: "91m", bound: "O", orig: "Po Lam", dest: "Diamond Hill"), stopInfo: StopInfoResult(name: "YAN KING ROAD", tcName: "欣景路", scName: "欣景路", latitude: "22.323790", longitude: "114.258615")).environmentObject(UserFavManager())
     }
 }
 

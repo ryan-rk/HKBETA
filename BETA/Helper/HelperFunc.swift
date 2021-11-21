@@ -26,7 +26,11 @@ class HelperFunc {
             if let etaExist = eta {
                 let dateDiff = Calendar.current.dateComponents([.minute], from: Date(), to: etaExist)
                 let minuteDiff = dateDiff.minute
-                stringEtas[index] = String(minuteDiff ?? 0)
+                if let unwrapMinuteDiff = minuteDiff, unwrapMinuteDiff < 0 {
+                    stringEtas[index] = "-"
+                } else {
+                    stringEtas[index] = String(minuteDiff ?? 0)
+                }
             }
         }
     }

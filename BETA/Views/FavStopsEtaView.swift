@@ -9,10 +9,11 @@ import SwiftUI
 
 struct FavStopsEtaView: View {
     
-    @StateObject var userFavManager = UserFavManager()
+//    @StateObject var userFavManager = UserFavManager()
+    @EnvironmentObject var userFavManager: UserFavManager
     @State var showSearchSheet = false
     
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    @State private var timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
@@ -52,11 +53,12 @@ struct FavStopsEtaView: View {
                     userFavManager.updateStopsEta()
                 })
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-                    // stop refresh timer
+                    stopTimer()
                     print("enter background")
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                    // start refresh timer
+                    userFavManager.updateStopsEta()
+                    startTimer()
                     print("enter foreground")
                 }
             }
@@ -71,7 +73,7 @@ struct FavStopsEtaView: View {
                         }
                         .sheet(isPresented: $showSearchSheet, onDismiss: dismissSearchSheet) {
                             NavigationView {
-                                RouteSelectionView(userFavManager: userFavManager)
+                                RouteSelectionView()
                                     .navigationBarTitle("Routes")
                             }
                         }
@@ -102,6 +104,14 @@ struct FavStopsEtaView: View {
             HelperFunc.formatTimeDiffToString(etas: etas, stringEtas: &stringEtas)
         }
         return stringEtas
+    }
+    
+    func startTimer() {
+        timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    }
+    
+    func stopTimer() {
+        timer.upstream.connect().cancel()
     }
     
 }
