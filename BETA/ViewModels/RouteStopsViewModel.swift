@@ -44,13 +44,11 @@ class RouteStopsViewModel: ObservableObject {
         }
     }
     
-//    func fetchStopEtas(company: BusCo, route: String, bound: String, stopSeq: String, stopID: String) {
     static func fetchStopEtas(company: BusCo, route: String, bound: String, stopID: String, completion: @escaping ([Date?])->() ) {
         let stopEtaUrlString = company.getStopEtaUrl(route: route, stopID: stopID)
         let stopEtaUrl = URL(string: stopEtaUrlString)
         NetworkManager.fetchData(url: stopEtaUrl, resultType: RouteStopEtaResult.self) { results in
             if let stopEtaResult = results as? RouteStopEtaResult {
-//                var stopEtas = ["-", "-", "-"]
                 var stopEtas: [Date?] = [nil, nil, nil]
                 var stopCount = 0
                 for stopEta in stopEtaResult.data {
@@ -60,7 +58,6 @@ class RouteStopsViewModel: ObservableObject {
                     }
                 }
                 completion(stopEtas)
-//                self.routeStopsEtas[stopSeq] = stopEtas
             } else {
                 print("Stop eta result downcast failed")
             }
@@ -71,8 +68,6 @@ class RouteStopsViewModel: ObservableObject {
         for routeStop in routeStopsResult.data {
             fetchStopName(company: company, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
             let boundOrDir = routeStop.bound ?? "O"
-//            let boundOrDir = routeStop.bound ?? routeStop.direction ?? "O"
-//            RouteStopsViewModel.fetchStopEtas(company: company, route: routeStop.route, bound: boundOrDir, stopSeq: routeStop.stopSequence, stopID: routeStop.stopID)
             RouteStopsViewModel.fetchStopEtas(company: company, route: routeStop.route, bound: boundOrDir, stopID: routeStop.stopID) { stopEtas in
                 self.routeStopsEtas[routeStop.stopSequence] = stopEtas
             }

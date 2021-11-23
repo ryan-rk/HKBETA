@@ -9,7 +9,6 @@ import Foundation
 
 class RouteViewModel: ObservableObject {
     
-//    let networkManager = NetworkManager()
     @Published var routeResults = [RouteResult]()
     
     func fetchRouteData(company: BusCo, route: String, bound: String) {

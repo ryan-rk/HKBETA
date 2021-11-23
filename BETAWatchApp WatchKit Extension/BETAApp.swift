@@ -16,7 +16,6 @@ struct BETAApp: App {
         
         WindowGroup {
             NavigationView {
-//                ContentView()
                 FavStopsEtaView().environmentObject(userFavManager)
             }
         }

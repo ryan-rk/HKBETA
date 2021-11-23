@@ -21,7 +21,6 @@ struct RouteStopsResult: Decodable {
         }
         let route: String
         let bound: String?
-//        let direction: String?
         let stopSequence: String
         let stopID: String
         
@@ -41,8 +40,6 @@ struct RouteStopsResult: Decodable {
             } catch {
                 bound = try container.decodeIfPresent(String.self, forKey: .bound)
             }
-//            bound = try container.decodeIfPresent(String.self, forKey: .bound)
-//            direction = try container.decodeIfPresent(String.self, forKey: .direction)
             do {
                 stopSequence = try container.decode(String.self, forKey: .stopSequence)
             } catch {
@@ -54,7 +51,6 @@ struct RouteStopsResult: Decodable {
         init(route: String, bound: String, stopSequence: String, stopID: String) {
             self.route = route
             self.bound = bound
-//            self.direction = bound
             self.stopSequence = stopSequence
             self.stopID = stopID
         }

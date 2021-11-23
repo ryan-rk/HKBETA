@@ -12,7 +12,7 @@
 		9112DED52734EA86009D6CDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9112DED42734EA86009D6CDB /* Preview Assets.xcassets */; };
 		9112DEDC2734EAAE009D6CDB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */; };
 		9112DEE027351C51009D6CDB /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
-		9112DEE227352130009D6CDB /* UserConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserConf.swift */; };
+		9112DEE227352130009D6CDB /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserSettings.swift */; };
 		9132B977274A523F00BED51D /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
 		9132B978274A523F00BED51D /* UserFav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F242273FAC9D008592F6 /* UserFav.swift */; };
 		9132B979274A523F00BED51D /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF992F2744AF4900922C95 /* RouteViewModel.swift */; };
@@ -20,18 +20,17 @@
 		9132B97B274A524B00BED51D /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C7273CC55800AC059A /* RouteModel.swift */; };
 		9132B97C274A525E00BED51D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */; };
 		9132B97D274A525E00BED51D /* HelperFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F246273FC4FA008592F6 /* HelperFunc.swift */; };
-		9132B97E274A526A00BED51D /* UserConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserConf.swift */; };
+		9132B97E274A526A00BED51D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserSettings.swift */; };
 		9132B97F274A526A00BED51D /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
 		9132B981274A616300BED51D /* RouteSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132B980274A616300BED51D /* RouteSearchView.swift */; };
 		9132B983274A663300BED51D /* RouteStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132B982274A663200BED51D /* RouteStopsView.swift */; };
 		9132B985274A6AF700BED51D /* StopDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132B984274A6AF700BED51D /* StopDetailsView.swift */; };
-		913494C6273CC2BA00AC059A /* RouteSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C5273CC2BA00AC059A /* RouteSelectionView.swift */; };
+		913494C6273CC2BA00AC059A /* RouteSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C5273CC2BA00AC059A /* RouteSearchView.swift */; };
 		913494C8273CC55900AC059A /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C7273CC55800AC059A /* RouteModel.swift */; };
 		913494CA273CC60000AC059A /* RouteStopsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C9273CC60000AC059A /* RouteStopsModel.swift */; };
 		9141A2C6274A4D7D00244960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9141A2C5274A4D7D00244960 /* Assets.xcassets */; };
 		9141A2CC274A4D7D00244960 /* BETAWatchApp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9141A2CB274A4D7D00244960 /* BETAWatchApp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9141A2D1274A4D7D00244960 /* BETAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141A2D0274A4D7D00244960 /* BETAApp.swift */; };
-		9141A2D3274A4D7D00244960 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141A2D2274A4D7D00244960 /* ContentView.swift */; };
 		9141A2D5274A4D7D00244960 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141A2D4274A4D7D00244960 /* NotificationController.swift */; };
 		9141A2D7274A4D7D00244960 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141A2D6274A4D7D00244960 /* NotificationView.swift */; };
 		9141A2D9274A4D7D00244960 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9141A2D8274A4D7D00244960 /* ComplicationController.swift */; };
@@ -44,10 +43,10 @@
 		9194F243273FAC9D008592F6 /* UserFav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F242273FAC9D008592F6 /* UserFav.swift */; };
 		9194F245273FAE58008592F6 /* FavStopsEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F244273FAE58008592F6 /* FavStopsEtaView.swift */; };
 		9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F246273FC4FA008592F6 /* HelperFunc.swift */; };
-		91E62B4B2748A079001A39AE /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E62B4A2748A079001A39AE /* TestView.swift */; };
 		91E8CAA0274760AB00A5FC3F /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
 		91E8CAA1274760BA00A5FC3F /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
 		91E8CAA2274760DF00A5FC3F /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C7273CC55800AC059A /* RouteModel.swift */; };
+		91F0EAC1274CC244003333B4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserSettings.swift */; };
 		91FF99302744AF4900922C95 /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF992F2744AF4900922C95 /* RouteViewModel.swift */; };
 		91FF99322744AF8400922C95 /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
 		91FF993D2744B5CD00922C95 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91FF993C2744B5CD00922C95 /* WidgetKit.framework */; };
@@ -130,18 +129,17 @@
 		9112DED42734EA86009D6CDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9112DEDF27351C51009D6CDB /* BusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusData.swift; sourceTree = "<group>"; };
-		9112DEE127352130009D6CDB /* UserConf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConf.swift; sourceTree = "<group>"; };
+		9112DEE127352130009D6CDB /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		9132B980274A616300BED51D /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
 		9132B982274A663200BED51D /* RouteStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopsView.swift; sourceTree = "<group>"; };
 		9132B984274A6AF700BED51D /* StopDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsView.swift; sourceTree = "<group>"; };
-		913494C5273CC2BA00AC059A /* RouteSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionView.swift; sourceTree = "<group>"; };
+		913494C5273CC2BA00AC059A /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
 		913494C7273CC55800AC059A /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		913494C9273CC60000AC059A /* RouteStopsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopsModel.swift; sourceTree = "<group>"; };
 		9141A2C3274A4D7B00244960 /* BETAWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BETAWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9141A2C5274A4D7D00244960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9141A2CB274A4D7D00244960 /* BETAWatchApp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BETAWatchApp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9141A2D0274A4D7D00244960 /* BETAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BETAApp.swift; sourceTree = "<group>"; };
-		9141A2D2274A4D7D00244960 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9141A2D4274A4D7D00244960 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		9141A2D6274A4D7D00244960 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		9141A2D8274A4D7D00244960 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 		9194F246273FC4FA008592F6 /* HelperFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunc.swift; sourceTree = "<group>"; };
 		91A6D3F6274A8C120097CE1B /* BETAWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BETAWatchApp.entitlements; sourceTree = "<group>"; };
 		91C218F5274A8FC300F07027 /* BETAWatchApp WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BETAWatchApp WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		91E62B4A2748A079001A39AE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		91FF992F2744AF4900922C95 /* RouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopsViewModel.swift; sourceTree = "<group>"; };
 		91FF993A2744B5CD00922C95 /* BETA WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BETA WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,7 +231,6 @@
 				9112DED32734EA86009D6CDB /* Preview Content */,
 				91FF99352744B08D00922C95 /* Models */,
 				91FF99342744B05A00922C95 /* ViewModels */,
-				91E62B4A2748A079001A39AE /* TestView.swift */,
 			);
 			path = BETA;
 			sourceTree = "<group>";
@@ -261,7 +257,6 @@
 			children = (
 				91C218F5274A8FC300F07027 /* BETAWatchApp WatchKit Extension.entitlements */,
 				9141A2D0274A4D7D00244960 /* BETAApp.swift */,
-				9141A2D2274A4D7D00244960 /* ContentView.swift */,
 				9141A2D4274A4D7D00244960 /* NotificationController.swift */,
 				9141A2D6274A4D7D00244960 /* NotificationView.swift */,
 				9141A2D8274A4D7D00244960 /* ComplicationController.swift */,
@@ -288,7 +283,7 @@
 		91E8CAA32747614300A5FC3F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				9112DEE127352130009D6CDB /* UserConf.swift */,
+				9112DEE127352130009D6CDB /* UserSettings.swift */,
 				9112DEDF27351C51009D6CDB /* BusData.swift */,
 			);
 			path = Data;
@@ -307,7 +302,7 @@
 		91FF99332744B04200922C95 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				913494C5273CC2BA00AC059A /* RouteSelectionView.swift */,
+				913494C5273CC2BA00AC059A /* RouteSearchView.swift */,
 				9173B82D273E7A8600A48642 /* RouteStopsView.swift */,
 				9194F23F273F73DD008592F6 /* StopDetailsView.swift */,
 				9194F244273FAE58008592F6 /* FavStopsEtaView.swift */,
@@ -515,11 +510,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9112DEE227352130009D6CDB /* UserConf.swift in Sources */,
+				9112DEE227352130009D6CDB /* UserSettings.swift in Sources */,
 				9112DEDC2734EAAE009D6CDB /* NetworkManager.swift in Sources */,
-				913494C6273CC2BA00AC059A /* RouteSelectionView.swift in Sources */,
+				913494C6273CC2BA00AC059A /* RouteSearchView.swift in Sources */,
 				9112DECE2734EA84009D6CDB /* BETAApp.swift in Sources */,
-				91E62B4B2748A079001A39AE /* TestView.swift in Sources */,
 				913494CA273CC60000AC059A /* RouteStopsModel.swift in Sources */,
 				9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */,
 				91FF99322744AF8400922C95 /* RouteStopsViewModel.swift in Sources */,
@@ -544,7 +538,6 @@
 				9141A2D5274A4D7D00244960 /* NotificationController.swift in Sources */,
 				9141A2ED274A4E0800244960 /* FavStopsEtaView.swift in Sources */,
 				9132B97D274A525E00BED51D /* HelperFunc.swift in Sources */,
-				9141A2D3274A4D7D00244960 /* ContentView.swift in Sources */,
 				9141A2D9274A4D7D00244960 /* ComplicationController.swift in Sources */,
 				9132B983274A663300BED51D /* RouteStopsView.swift in Sources */,
 				9132B978274A523F00BED51D /* UserFav.swift in Sources */,
@@ -552,7 +545,7 @@
 				9132B979274A523F00BED51D /* RouteViewModel.swift in Sources */,
 				9132B97F274A526A00BED51D /* BusData.swift in Sources */,
 				9141A2D7274A4D7D00244960 /* NotificationView.swift in Sources */,
-				9132B97E274A526A00BED51D /* UserConf.swift in Sources */,
+				9132B97E274A526A00BED51D /* UserSettings.swift in Sources */,
 				9132B977274A523F00BED51D /* RouteStopsViewModel.swift in Sources */,
 				9132B97B274A524B00BED51D /* RouteModel.swift in Sources */,
 				9132B97A274A524B00BED51D /* RouteStopsModel.swift in Sources */,
@@ -566,6 +559,7 @@
 				91FF9951274534AA00922C95 /* NetworkManager.swift in Sources */,
 				91FF9953274534DC00922C95 /* RouteStopsModel.swift in Sources */,
 				91FF9952274534B900922C95 /* HelperFunc.swift in Sources */,
+				91F0EAC1274CC244003333B4 /* UserSettings.swift in Sources */,
 				91E8CAA2274760DF00A5FC3F /* RouteModel.swift in Sources */,
 				91FF99422744B5CD00922C95 /* BETA_Widget.swift in Sources */,
 				91E8CAA1274760BA00A5FC3F /* BusData.swift in Sources */,
@@ -726,6 +720,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BETA/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Require current user location to show with respect to bus stop";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -758,6 +753,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BETA/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Require current user location to show with respect to bus stop";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -789,6 +785,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = BETAWatchApp_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = BETAWatchApp;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Require current user location to show with respect to bus stop";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.rkcoding.ios.BETA;
 				MARKETING_VERSION = 1.0;
@@ -816,6 +813,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = BETAWatchApp_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = BETAWatchApp;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Require current user location to show with respect to bus stop";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.rkcoding.ios.BETA;
 				MARKETING_VERSION = 1.0;
@@ -843,8 +841,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BETAWatchApp WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "BETAWatchApp WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = BETAWatchApp_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Require current user location to show with respect to bus stop";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -875,8 +874,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BETAWatchApp WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "BETAWatchApp WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = BETAWatchApp_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Require current user location to show with respect to bus stop";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

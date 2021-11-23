@@ -23,13 +23,6 @@ struct StopDetailsView: View {
     
     var body: some View {
         VStack {
-//            Map(coordinateRegion: .constant(MKCoordinateRegion(center: stopCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))), interactionModes: .all, showsUserLocation: true, annotationItems: mapMarkers) { marker in
-//                marker.location
-//            }
-//                .frame(width: 350, height: 350)
-//                .cornerRadius(40)
-//                .shadow(radius: 10)
-//
             Text(stopInfo?.enName ?? "Name not available")
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
@@ -50,7 +43,6 @@ struct StopDetailsView: View {
             }
             
             NavigationLink {
-//                Text("hello")
                 Map(coordinateRegion: .constant(MKCoordinateRegion(center: stopCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))), interactionModes: .all, showsUserLocation: true, annotationItems: mapMarkers) { marker in
                 marker.location
                 }

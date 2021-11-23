@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FavStopsEtaView: View {
     
-//    @StateObject var userFavManager = UserFavManager()
     @EnvironmentObject var userFavManager: UserFavManager
     @State var showSearchSheet = false
     
@@ -36,7 +35,6 @@ struct FavStopsEtaView: View {
                             VStack {
                                 let stringEtas = formatDisplayTime(userFavId: userFav.id)
                                 Text(stringEtas[0] + " min")
-//                                Text("\(userFavManager.routeStopsEtas[userFav.id]?[0] ?? "-" ) min")
                                     .font(.system(size: 25))
                                     .bold()
                                 Text(stringEtas[1] + " min")
@@ -73,7 +71,7 @@ struct FavStopsEtaView: View {
                         }
                         .sheet(isPresented: $showSearchSheet, onDismiss: dismissSearchSheet) {
                             NavigationView {
-                                RouteSelectionView()
+                                RouteSearchView()
                                     .navigationBarTitle("Routes")
                             }
                         }
@@ -122,8 +120,5 @@ struct FavStopsEtaView_Previews: PreviewProvider {
     
     static var previews: some View {
         FavStopsEtaView()
-            .onAppear {
-                userFavManager.addDemoFavs()
-            }
     }
 }
