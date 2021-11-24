@@ -15,7 +15,14 @@ struct RouteStopsView: View {
     var body: some View {
         List {
             ForEach(routeStopsViewModel.routeStopsResult.data) { routeStop in
-                NavigationLink(destination: StopDetailsView(routeStop: routeStop, routeResult: routeStopsViewModel.routeResult, stopInfo: routeStopsViewModel.routeStopsInfo[routeStop.stopSequence])){
+                
+                let stopInfo = routeStopsViewModel.routeStopsInfo[routeStop.stopSequence]
+                let routeResult = routeStopsViewModel.routeResult
+                let selectedUserFav = UserFav(company: routeResult.company, route: routeStop.route, bound: routeStop.bound ?? "O", enDest: routeResult.dest, stopId: routeStop.stopID, stopEnName: stopInfo?.enName ?? "Name not available")
+                let (isFav, favIndex) = userFavManager.checkFavExist(checkedUserFav: selectedUserFav)
+                
+//                NavigationLink(destination: StopDetailsView(routeStop: routeStop, routeResult: routeStopsViewModel.routeResult, stopInfo: routeStopsViewModel.routeStopsInfo[routeStop.stopSequence])){
+                NavigationLink(destination: StopDetailsView(stopInfo: stopInfo, currentUserFav: selectedUserFav, isFav: isFav, favIndex: favIndex)){
                     VStack {
                         Text("\(routeStopsViewModel.routeStopsInfo[routeStop.stopSequence]?.enName ?? "-")")
                             .font(.system(size: 20))

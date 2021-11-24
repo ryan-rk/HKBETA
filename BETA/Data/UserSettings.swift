@@ -11,11 +11,6 @@ struct UserSettings {
     
     static let appGroupUrl = "group.com.rkcoding.ios.BETA.contents"
     
-    static var selectedLanguage: Language = .EN
+    static var selectedLanguage = K.Language.EN
     
-    enum Language {
-        case EN
-        case TC
-        case SC
-    }
 }

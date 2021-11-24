@@ -47,7 +47,7 @@ struct FavStopsEtaView: View {
                                         .font(.system(size: 10))
                                 }
                                 .padding(2)
-                                .background(Color(UIColor(named: "RedVelvet")!))
+                                .background(Color(UIColor(named: K.CustomColors.redVelvet.rawValue)!))
                                 .cornerRadius(8)
                                 Text(userFav.stopEnName)
                                     .font(.system(size: 10))

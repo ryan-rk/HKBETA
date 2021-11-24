@@ -86,11 +86,11 @@ struct BETA_WidgetEntryView : View {
                         Text(firstEta, style: .timer)
                             .font(.system(size: 40))
                             .multilineTextAlignment(.center)
-                            .foregroundColor(Color(uiColor: UIColor(named: "RedVelvet")!))
+                            .foregroundColor(Color(uiColor: UIColor(named: K.CustomColors.redVelvet.rawValue)!))
                     } else {
                         Text("--")
                             .font(.system(size: 40))
-                            .foregroundColor(Color(uiColor: UIColor(named: "RedVelvet")!))
+                            .foregroundColor(Color(uiColor: UIColor(named: K.CustomColors.redVelvet.rawValue)!))
                     }
                     Text("min")
                         .font(.system(size: 12))

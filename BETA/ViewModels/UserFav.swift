@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserFav: Identifiable, Codable {
+struct UserFav: Identifiable, Codable, Equatable {
     let id = UUID()
     let company: String
     let route: String
@@ -15,6 +15,10 @@ struct UserFav: Identifiable, Codable {
     let enDest: String
     let stopId: String
     let stopEnName: String
+    
+    static func ==(lhs: UserFav, rhs: UserFav) -> Bool {
+        return (lhs.company == rhs.company) && (lhs.route == rhs.route) && (lhs.bound == rhs.bound) && (lhs.stopId == rhs.stopId)
+    }
 }
 
 class UserFavManager: ObservableObject {
@@ -27,15 +31,29 @@ class UserFavManager: ObservableObject {
         updateStopsEta()
     }
     
+    func checkFavExist(checkedUserFav: UserFav) -> (Bool, Int?) {
+        var defaultIsExist = false
+        var defaultIndex: Int? = nil
+        for (index, userFav) in userFavs.enumerated() {
+            if userFav == checkedUserFav {
+                defaultIsExist = true
+                defaultIndex = index
+                break
+            }
+        }
+        return (defaultIsExist, defaultIndex)
+    }
+    
     func addFav(newFav: UserFav) {
         userFavs.append(newFav)
         saveFavs()
+        updateStopsEta()
     }
     
     func removeFav(at offsets: IndexSet) {
         userFavs.remove(atOffsets: offsets)
-        updateStopsEta()
         saveFavs()
+        updateStopsEta()
     }
     
     func loadFavs() -> [UserFav] {

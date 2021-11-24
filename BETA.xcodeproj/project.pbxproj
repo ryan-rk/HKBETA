@@ -47,6 +47,9 @@
 		91E8CAA1274760BA00A5FC3F /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
 		91E8CAA2274760DF00A5FC3F /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C7273CC55800AC059A /* RouteModel.swift */; };
 		91F0EAC1274CC244003333B4 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserSettings.swift */; };
+		91F0EAC3274CD437003333B4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F0EAC2274CD437003333B4 /* Constants.swift */; };
+		91F0EAC4274CD45B003333B4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F0EAC2274CD437003333B4 /* Constants.swift */; };
+		91F0EAC5274CD45C003333B4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F0EAC2274CD437003333B4 /* Constants.swift */; };
 		91FF99302744AF4900922C95 /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF992F2744AF4900922C95 /* RouteViewModel.swift */; };
 		91FF99322744AF8400922C95 /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
 		91FF993D2744B5CD00922C95 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91FF993C2744B5CD00922C95 /* WidgetKit.framework */; };
@@ -155,6 +158,7 @@
 		9194F246273FC4FA008592F6 /* HelperFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunc.swift; sourceTree = "<group>"; };
 		91A6D3F6274A8C120097CE1B /* BETAWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BETAWatchApp.entitlements; sourceTree = "<group>"; };
 		91C218F5274A8FC300F07027 /* BETAWatchApp WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BETAWatchApp WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		91F0EAC2274CD437003333B4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		91FF992F2744AF4900922C95 /* RouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopsViewModel.swift; sourceTree = "<group>"; };
 		91FF993A2744B5CD00922C95 /* BETA WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BETA WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +289,7 @@
 			children = (
 				9112DEE127352130009D6CDB /* UserSettings.swift */,
 				9112DEDF27351C51009D6CDB /* BusData.swift */,
+				91F0EAC2274CD437003333B4 /* Constants.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				913494CA273CC60000AC059A /* RouteStopsModel.swift in Sources */,
 				9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */,
 				91FF99322744AF8400922C95 /* RouteStopsViewModel.swift in Sources */,
+				91F0EAC3274CD437003333B4 /* Constants.swift in Sources */,
 				9173B82E273E7A8600A48642 /* RouteStopsView.swift in Sources */,
 				9194F245273FAE58008592F6 /* FavStopsEtaView.swift in Sources */,
 				9194F243273FAC9D008592F6 /* UserFav.swift in Sources */,
@@ -549,6 +555,7 @@
 				9132B977274A523F00BED51D /* RouteStopsViewModel.swift in Sources */,
 				9132B97B274A524B00BED51D /* RouteModel.swift in Sources */,
 				9132B97A274A524B00BED51D /* RouteStopsModel.swift in Sources */,
+				91F0EAC5274CD45C003333B4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91FF9951274534AA00922C95 /* NetworkManager.swift in Sources */,
+				91F0EAC4274CD45B003333B4 /* Constants.swift in Sources */,
 				91FF9953274534DC00922C95 /* RouteStopsModel.swift in Sources */,
 				91FF9952274534B900922C95 /* HelperFunc.swift in Sources */,
 				91F0EAC1274CC244003333B4 /* UserSettings.swift in Sources */,
