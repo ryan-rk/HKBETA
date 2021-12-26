@@ -13,6 +13,8 @@
 		9112DEDC2734EAAE009D6CDB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */; };
 		9112DEE027351C51009D6CDB /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
 		9112DEE227352130009D6CDB /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEE127352130009D6CDB /* UserSettings.swift */; };
+		912BB4BB274DF36400E309A0 /* BETAWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 912BB4BA274DF36400E309A0 /* BETAWidget.intentdefinition */; };
+		912BB4BC274DF36400E309A0 /* BETAWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 912BB4BA274DF36400E309A0 /* BETAWidget.intentdefinition */; };
 		9132B977274A523F00BED51D /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
 		9132B978274A523F00BED51D /* UserFav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F242273FAC9D008592F6 /* UserFav.swift */; };
 		9132B979274A523F00BED51D /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF992F2744AF4900922C95 /* RouteViewModel.swift */; };
@@ -43,6 +45,9 @@
 		9194F243273FAC9D008592F6 /* UserFav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F242273FAC9D008592F6 /* UserFav.swift */; };
 		9194F245273FAE58008592F6 /* FavStopsEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F244273FAE58008592F6 /* FavStopsEtaView.swift */; };
 		9194F247273FC4FA008592F6 /* HelperFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9194F246273FC4FA008592F6 /* HelperFunc.swift */; };
+		9197F7032758C3AF00895165 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9112DED12734EA86009D6CDB /* Assets.xcassets */; };
+		91CCCF09274FEFA800640260 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9112DED12734EA86009D6CDB /* Assets.xcassets */; };
+		91CCCF0A274FEFA900640260 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9112DED12734EA86009D6CDB /* Assets.xcassets */; };
 		91E8CAA0274760AB00A5FC3F /* RouteStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF99312744AF8400922C95 /* RouteStopsViewModel.swift */; };
 		91E8CAA1274760BA00A5FC3F /* BusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEDF27351C51009D6CDB /* BusData.swift */; };
 		91E8CAA2274760DF00A5FC3F /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913494C7273CC55800AC059A /* RouteModel.swift */; };
@@ -133,6 +138,7 @@
 		9112DEDB2734EAAE009D6CDB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9112DEDF27351C51009D6CDB /* BusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusData.swift; sourceTree = "<group>"; };
 		9112DEE127352130009D6CDB /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		912BB4BA274DF36400E309A0 /* BETAWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = BETAWidget.intentdefinition; sourceTree = SOURCE_ROOT; };
 		9132B980274A616300BED51D /* RouteSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchView.swift; sourceTree = "<group>"; };
 		9132B982274A663200BED51D /* RouteStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStopsView.swift; sourceTree = "<group>"; };
 		9132B984274A6AF700BED51D /* StopDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsView.swift; sourceTree = "<group>"; };
@@ -346,6 +352,7 @@
 		91FF99402744B5CD00922C95 /* BETA Widget */ = {
 			isa = PBXGroup;
 			children = (
+				912BB4BA274DF36400E309A0 /* BETAWidget.intentdefinition */,
 				91FF99412744B5CD00922C95 /* BETA_Widget.swift */,
 				91FF99432744B5CE00922C95 /* Assets.xcassets */,
 				91FF99452744B5CE00922C95 /* Info.plist */,
@@ -487,6 +494,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91CCCF0A274FEFA900640260 /* Assets.xcassets in Resources */,
 				9141A2C6274A4D7D00244960 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9141A2DE274A4D7E00244960 /* Preview Assets.xcassets in Resources */,
+				9197F7032758C3AF00895165 /* Assets.xcassets in Resources */,
 				9141A2DB274A4D7E00244960 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91CCCF09274FEFA800640260 /* Assets.xcassets in Resources */,
 				91FF99442744B5CE00922C95 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9112DEE227352130009D6CDB /* UserSettings.swift in Sources */,
+				912BB4BB274DF36400E309A0 /* BETAWidget.intentdefinition in Sources */,
 				9112DEDC2734EAAE009D6CDB /* NetworkManager.swift in Sources */,
 				913494C6273CC2BA00AC059A /* RouteSearchView.swift in Sources */,
 				9112DECE2734EA84009D6CDB /* BETAApp.swift in Sources */,
@@ -573,6 +584,7 @@
 				91E8CAA1274760BA00A5FC3F /* BusData.swift in Sources */,
 				91FF994F2744B98000922C95 /* Extensions.swift in Sources */,
 				91FF99502745306400922C95 /* UserFav.swift in Sources */,
+				912BB4BC274DF36400E309A0 /* BETAWidget.intentdefinition in Sources */,
 				91E8CAA0274760AB00A5FC3F /* RouteStopsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

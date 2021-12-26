@@ -9,25 +9,33 @@ import WidgetKit
 import SwiftUI
 
 
-struct Provider: TimelineProvider {
+struct Provider: IntentTimelineProvider {
     
     var userFavManager = UserFavManager()
     
     func placeholder(in context: Context) -> FavEtaEntry {
-        return FavEtaEntry(date: Date(), route: "--", enDest: "Destination", eta: [nil,nil,nil])
+        return FavEtaEntry(date: Date(), route: "--", enDest: "Destination", enStop: "Stop", eta: [nil,nil,nil])
     }
-
-    func getSnapshot(in context: Context, completion: @escaping (FavEtaEntry) -> ()) {
+    
+    func getSnapshot(for configuration: FavEntryIndexIntent, in context: Context, completion: @escaping (FavEtaEntry) -> ()) {
         let firstUserFav = userFavManager.userFavs.first
-        let entry = FavEtaEntry(date: Date(), route: firstUserFav?.route ?? "99X", enDest: firstUserFav?.enDest ?? "Destination", eta: [Date(),Calendar.current.date(byAdding: .minute, value: 10, to: Date()),Calendar.current.date(byAdding: .minute, value: 20, to: Date())])
+        let entry = FavEtaEntry(date: Date(), route: firstUserFav?.route ?? "99X", enDest: firstUserFav?.enDest ?? "Destination", enStop: "Stop", eta: [Date(),Calendar.current.date(byAdding: .minute, value: 10, to: Date()),Calendar.current.date(byAdding: .minute, value: 20, to: Date())])
         completion(entry)
     }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    
+    func getTimeline(for configuration: FavEntryIndexIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
-        let firstUserFav = userFavManager.userFavs.first ?? UserFav(company: "-", route: "-", bound: "-", enDest: "Destination", stopId: "-", stopEnName: "-")
+        let selectedUserFav: UserFav
+        if userFavManager.userFavs.count > 0 {
+            let favEntryIndex = min(((configuration.index as? Int) ?? 1)-1, userFavManager.userFavs.count - 1)
+            selectedUserFav = userFavManager.userFavs[favEntryIndex]
+            print("fav index: \(favEntryIndex), first in min: \(((configuration.index as? Int) ?? 1)-1), userfav count: \(userFavManager.userFavs.count-1)")
+        } else {
+            selectedUserFav = UserFav(company: "-", route: "-", bound: "-", enDest: "Destination", stopId: "-", stopEnName: "-")
+        }
         
-        RouteStopsViewModel.fetchStopEtas(company: BusCo(rawValue: firstUserFav.company) ?? .kmb, route: firstUserFav.route, bound: firstUserFav.bound, stopID: firstUserFav.stopId) { stopEtas in
+        
+        RouteStopsViewModel.fetchStopEtas(company: BusCo(rawValue: selectedUserFav.company) ?? .kmb, route: selectedUserFav.route, bound: selectedUserFav.bound, stopID: selectedUserFav.stopId) { stopEtas in
             
             
             var entries: [FavEtaEntry] = []
@@ -43,17 +51,15 @@ struct Provider: TimelineProvider {
                 while etaSliced.count < 3 {
                     etaSliced.append(nil)
                 }
-                let entry = FavEtaEntry(date: entryDate ?? Date(), route: firstUserFav.route, enDest: firstUserFav.enDest, eta: Array(etaSliced))
+                let entry = FavEtaEntry(date: entryDate ?? Date(), route: selectedUserFav.route, enDest: selectedUserFav.enDest, enStop: selectedUserFav.stopEnName, eta: Array(etaSliced))
                 entries.append(entry)
-                print("etas: \(entry.eta)")
             }
+            let lastEntryDate = stopEtas.last
+            let lastEntryEtas: [Date?] = [nil, nil, nil]
+            let lastEntry = FavEtaEntry(date: (lastEntryDate ?? Date()) ?? Date(), route: selectedUserFav.route, enDest: selectedUserFav.enDest, enStop: selectedUserFav.stopEnName, eta: lastEntryEtas)
+            entries.append(lastEntry)
             
             let expiryDate = Calendar.current.date(byAdding: .minute, value: 2, to: Date())
-            if let unwrapExpiryDate = expiryDate {
-                print("expiry date: \(unwrapExpiryDate)")
-            } else {
-                print("expiry date: failed")
-            }
             let timeline = Timeline(entries: entries, policy: .after(expiryDate ?? Date()))
             
             completion(timeline)
@@ -68,6 +74,7 @@ struct FavEtaEntry: TimelineEntry {
     
     let route: String
     let enDest: String
+    let enStop: String
     let eta: [Date?]
 }
 
@@ -79,69 +86,76 @@ struct BETA_WidgetEntryView : View {
     var body: some View {
         VStack {
             
-            VStack {
+            VStack(spacing: 0) {
                 Spacer()
+                HStack {
+                    Text(entry.route)
+                        .font(.system(size: 18))
+                        .padding(2)
+                        .background(Color(uiColor: UIColor.systemBackground))
+                        .cornerRadius(8)
+                    Spacer()
+                    Text(entry.enDest)
+                        .font(.system(size: 10))
+                    Spacer()
+                }
+                .padding(5)
+                .background(Color(uiColor: UIColor(named: K.CustomColors.redVelvet.rawValue)!))
+                .cornerRadius(8)
+                
+                HStack {
+                    Spacer()
+                    Text("At: " + entry.enStop)
+                        .font(.system(size: 10))
+                        .padding(5)
+                    Spacer()
+                    
+                }
+                Divider()
+                Spacer()
+                
                 HStack {
                     if let firstEta = entry.eta[0], Calendar.current.dateComponents([.second], from: Date(), to: firstEta).second ?? 0 >= 0 {
                         Text(firstEta, style: .timer)
                             .font(.system(size: 40))
                             .multilineTextAlignment(.center)
-                            .foregroundColor(Color(uiColor: UIColor(named: K.CustomColors.redVelvet.rawValue)!))
                     } else {
                         Text("--")
                             .font(.system(size: 40))
-                            .foregroundColor(Color(uiColor: UIColor(named: K.CustomColors.redVelvet.rawValue)!))
                     }
                     Text("min")
                         .font(.system(size: 12))
                 }
-                Spacer()
+                
                 HStack {
                     Text("Next")
                         .font(.system(size: 10))
                     Circle().frame(width: 5, height: 5)
                     HStack {
+                        Spacer()
                         if let secondEta = entry.eta[1] {
                             Text(secondEta, style: .timer)
                         } else {
                             Text(" - ")
                         }
+                        Spacer()
                         if let secondEta = entry.eta[2] {
                             Text(secondEta, style: .timer)
                         } else {
                             Text(" - ")
                         }
+                        Spacer()
                     }
                     .font(.system(size: 10))
                 }
                 .padding(10)
                 .background(RoundedRectangle(cornerRadius: 10).opacity(0.2))
+            
                 Spacer()
             }
-            
-            Spacer()
-            
-            ZStack(alignment: .bottom) {
-                Image(uiImage: UIImage(named: "half-arrow")!)
-                    .resizable()
-                    .frame(width: 150, height: 15)
-                
-                HStack {
-                    Text(entry.route)
-                        .font(.system(size: 18))
-                        .padding(5)
-                        .foregroundColor(.white)
-                        .background(Color.red)
-                        .cornerRadius(8)
-                    Text(entry.enDest)
-                        .font(.system(size: 10))
-                }
-                .padding(.bottom, 10)
-            }
-            
-            Spacer()
         }
-        .padding(10)
+        .padding(8)
+        .background(Color(uiColor: UIColor.systemBackground))
     }
 }
 
@@ -150,7 +164,7 @@ struct BETA_Widget: Widget {
     let kind: String = "BETA_Widget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: FavEntryIndexIntent.self, provider: Provider()) { entry in
             BETA_WidgetEntryView(entry: entry)
         }
         .configurationDisplayName("BETA Widget")
@@ -161,7 +175,12 @@ struct BETA_Widget: Widget {
 
 struct BETA_Widget_Previews: PreviewProvider {
     static var previews: some View {
-        BETA_WidgetEntryView(entry: FavEtaEntry(date: Date(), route: "99X", enDest: "Long Destination", eta: [Date(),Date(),Date()]))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            BETA_WidgetEntryView(entry: FavEtaEntry(date: Date(), route: "99X", enDest: "Very Long Destination", enStop: "Super Duper Long Stop Name", eta: [Date(),Date(),Date()]))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            BETA_WidgetEntryView(entry: FavEtaEntry(date: Date(), route: "99X", enDest: "Very Long Destination", enStop: "Super Duper Long Stop Name", eta: [Date(),Date(),Date()]))
+                .preferredColorScheme(.dark)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+        }
     }
 }

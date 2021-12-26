@@ -9,9 +9,9 @@ import Foundation
 
 struct UserFav: Identifiable, Codable, Equatable {
     let id = UUID()
-    let company: String
+    let company: String     // "KMB", "NWFB", or "CTB"
     let route: String
-    let bound: String
+    let bound: String       // "I" or "O"
     let enDest: String
     let stopId: String
     let stopEnName: String
@@ -29,6 +29,10 @@ class UserFavManager: ObservableObject {
     init() {
         userFavs = loadFavs()
         updateStopsEta()
+    }
+    
+    init(userFavs: [UserFav]) {
+        self.userFavs = userFavs
     }
     
     func checkFavExist(checkedUserFav: UserFav) -> (Bool, Int?) {

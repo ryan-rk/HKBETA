@@ -19,19 +19,33 @@ struct FavStopsEtaView: View {
             VStack {
                 List {
                     ForEach(userFavManager.userFavs) { userFav in
-                        HStack {
-                            Text(userFav.route)
-                                .padding()
-                            VStack(alignment: .leading) {
-                                Text("Stop:")
-                                    .font(.system(size: 12))
-                                Text(userFav.stopEnName)
-                                    .font(.system(size: 20))
-                                    .padding(.bottom, 6)
-                                Text("To: \(userFav.enDest)")
-                                    .font(.system(size: 12))
+                        HStack(spacing: 0) {
+                            VStack {
+                                HStack {
+                                    Text(userFav.route)
+                                        .padding(5)
+                                        .background(Color(uiColor: UIColor.systemBackground))
+                                        .cornerRadius(8)
+                                    Spacer()
+                                    Text(userFav.enDest)
+                                        .font(.system(size: 12))
+                                        .lineLimit(1)
+                                    Spacer()
+                                }
+                                .padding(8)
+                                .background(Color(uiColor: UIColor(named: K.CustomColors.redVelvet.rawValue)!))
+                                .cornerRadius(8)
+                                HStack {
+                                    Image(systemName: "bus.fill")
+                                        .font(.system(size: 25))
+                                    Text(userFav.stopEnName)
+                                        .font(.system(size: 20))
+                                }
                             }
-                            Spacer()
+                            .padding(.trailing, 10)
+                            
+//                            Spacer()
+                            Divider()
                             VStack {
                                 let stringEtas = formatDisplayTime(userFavId: userFav.id)
                                 Text(stringEtas[0] + " min")
@@ -42,7 +56,8 @@ struct FavStopsEtaView: View {
                                 Text(stringEtas[2] + " min")
                                     .font(.system(size: 12))
                             }
-                            .padding()
+                            .frame(width: 80)
+                            .padding([.leading, .top, .bottom])
                         }
                     }
                     .onDelete(perform: userFavManager.removeFav)
@@ -116,9 +131,7 @@ struct FavStopsEtaView: View {
 
 struct FavStopsEtaView_Previews: PreviewProvider {
     
-    @StateObject static var userFavManager = UserFavManager()
-    
     static var previews: some View {
-        FavStopsEtaView()
+        FavStopsEtaView().environmentObject(UserFavManager(userFavs: [UserFav(company: "KMB", route: "99XX", bound: "O", enDest: "Super Long Destination Name", stopId: "123", stopEnName: "Super Duper Long Stop Name")]))
     }
 }

@@ -84,6 +84,6 @@ struct FavStopsEtaView: View {
 
 struct FavStopsEtaView_Previews: PreviewProvider {
     static var previews: some View {
-        FavStopsEtaView()
+        FavStopsEtaView().environmentObject(UserFavManager())
     }
 }
